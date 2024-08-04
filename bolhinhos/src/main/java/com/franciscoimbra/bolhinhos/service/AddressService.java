@@ -11,23 +11,22 @@ import java.util.List;
 
 @Service
 public class AddressService {
-
     @Autowired
     private AddressRepository addressRepository;
+    @Autowired
     private AddressMapper addressMapper;
 
     public Address save(AddressDTO addressDTO) {
         return addressRepository.save(addressMapper.addressDTOToAddress(addressDTO));
     }
+
     public List<AddressDTO> getAll() {
-        System.out.println("teste1"+addressRepository.findAll());
         return addressMapper.addressesToAddressDTOs(addressRepository.findAll());
     }
 
     public Address findById(Long id) {
         return addressRepository.getReferenceById(id);
     }
-
 
     public void delete(Address address) {
         addressRepository.delete(address);

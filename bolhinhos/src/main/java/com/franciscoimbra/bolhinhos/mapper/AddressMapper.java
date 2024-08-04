@@ -3,6 +3,7 @@ package com.franciscoimbra.bolhinhos.mapper;
 import com.franciscoimbra.bolhinhos.dto.AddressDTO;
 import com.franciscoimbra.bolhinhos.model.Address;
 import org.mapstruct.Mapper;
+import org.mapstruct.factory.Mappers;
 
 import java.util.List;
 
