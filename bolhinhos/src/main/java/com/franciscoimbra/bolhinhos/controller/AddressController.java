@@ -1,23 +1,43 @@
 package com.franciscoimbra.bolhinhos.controller;
-
 import com.franciscoimbra.bolhinhos.dto.AddressDTO;
 import com.franciscoimbra.bolhinhos.service.AddressService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/address/v1")
+@RequestMapping("/api/address/v1")
+@Tag(name = "Morada", description = "endpoints da morada")
 public class AddressController {
     @Autowired
     private AddressService addressService;
 
     @GetMapping
     public List<AddressDTO> findAll() {
-        return addressService.getAll();
+        return addressService.findAll();
     }
+
+    @GetMapping("/{id}")
+    public AddressDTO findById(@PathVariable("id") Long id) {
+        return addressService.findById(id);
+    }
+
+    @PostMapping
+    public AddressDTO create(@RequestBody AddressDTO addressDTO) {
+        return addressService.create(addressDTO);
+    }
+
+    @PutMapping
+    public AddressDTO update(@RequestBody AddressDTO addressDTO) {
+        return addressService.update(addressDTO);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> delete(@PathVariable("id") Long id) {
+        addressService.delete(id);
+        return ResponseEntity.ok().build();
+    }
+
 }

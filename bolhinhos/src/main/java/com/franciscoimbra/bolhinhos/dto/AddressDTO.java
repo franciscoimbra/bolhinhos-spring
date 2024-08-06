@@ -1,25 +1,23 @@
 package com.franciscoimbra.bolhinhos.dto;
-
-import jakarta.persistence.Column;
+import org.springframework.hateoas.RepresentationModel;
 
 import java.io.Serializable;
-import java.util.Objects;
 
-public class AddressDTO implements Serializable {
-    private Long id;
+
+public class AddressDTO extends RepresentationModel<AddressDTO> implements Serializable {
+    private Long key;
     private String street;
     private String city;
     private String state;
     private String zipCode;
     private String country;
 
-
-    public Long getId() {
-        return id;
+    public Long getKey() {
+        return key;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setKey(Long key) {
+        this.key = key;
     }
 
     public String getStreet() {
@@ -61,6 +59,4 @@ public class AddressDTO implements Serializable {
     public void setCountry(String country) {
         this.country = country;
     }
-
-
 }

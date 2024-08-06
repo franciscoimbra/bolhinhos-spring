@@ -2,11 +2,12 @@ package com.franciscoimbra.bolhinhos.dto;
 
 import com.franciscoimbra.bolhinhos.model.enums.RecipeType;
 import jakarta.persistence.Column;
+import org.springframework.hateoas.RepresentationModel;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
 
-public class RecipeDTO implements Serializable {
+public class RecipeDTO extends RepresentationModel<RecipeDTO> implements Serializable {
     private Long id;
     private String name;
     private RecipeType recipeType;

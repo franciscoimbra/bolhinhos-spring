@@ -1,22 +1,44 @@
 package com.franciscoimbra.bolhinhos.controller;
 
+import com.franciscoimbra.bolhinhos.dto.AddressDTO;
 import com.franciscoimbra.bolhinhos.dto.ClientUserDTO;
+import com.franciscoimbra.bolhinhos.service.AddressService;
 import com.franciscoimbra.bolhinhos.service.ClientUserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/clientuser/v1")
+@RequestMapping("/api/clientuser/v1")
 public class ClientUserController {
     @Autowired
     private ClientUserService clientUserService;
 
     @GetMapping
-    public List<ClientUserDTO> getClientUsers() {
+    public List<ClientUserDTO> findAll() {
         return clientUserService.findAll();
+    }
+
+    @GetMapping("/{id}")
+    public ClientUserDTO findById(@PathVariable("id") Long id) {
+        return clientUserService.findById(id);
+    }
+
+    @PostMapping
+    public ClientUserDTO create(@RequestBody ClientUserDTO clientUserDTO) {
+        return clientUserService.create(clientUserDTO);
+    }
+
+    @PutMapping
+    public ClientUserDTO update(@RequestBody ClientUserDTO clientUserDTO) {
+        return clientUserService.update(clientUserDTO);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> delete(@PathVariable("id") Long id) {
+        clientUserService.delete(id);
+        return ResponseEntity.ok().build();
     }
 }

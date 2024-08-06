@@ -5,11 +5,13 @@ import com.franciscoimbra.bolhinhos.model.ClientUser;
 import com.franciscoimbra.bolhinhos.model.Establishment;
 import com.franciscoimbra.bolhinhos.model.OrderItem;
 import jakarta.persistence.*;
+import org.springframework.hateoas.RepresentationModel;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.List;
 
-public class CustomerOrderDTO {
+public class CustomerOrderDTO extends RepresentationModel<CustomerOrderDTO> implements Serializable {
     private Long id;
     private Timestamp orderDate;
     private ClientUser client;

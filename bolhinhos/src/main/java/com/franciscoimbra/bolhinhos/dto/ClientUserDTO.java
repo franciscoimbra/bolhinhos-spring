@@ -3,11 +3,12 @@ package com.franciscoimbra.bolhinhos.dto;
 import com.franciscoimbra.bolhinhos.model.Establishment;
 import com.franciscoimbra.bolhinhos.model.enums.Roles;
 import jakarta.persistence.*;
+import org.springframework.hateoas.RepresentationModel;
 
 import java.io.Serializable;
 import java.util.Date;
 
-public class ClientUserDTO implements Serializable {
+public class ClientUserDTO extends RepresentationModel<ClientUserDTO>  implements Serializable {
     private Long id;
     private String firstName;
     private String lastName;

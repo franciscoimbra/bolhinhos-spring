@@ -5,11 +5,12 @@ import com.franciscoimbra.bolhinhos.model.Recipe;
 import jakarta.persistence.Column;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import org.springframework.hateoas.RepresentationModel;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
 
-public class OrderItemDTO implements Serializable {
+public class OrderItemDTO extends RepresentationModel<OrderItemDTO> implements Serializable {
     private Long id;
     private CustomerOrder order;
     private Recipe recipe;

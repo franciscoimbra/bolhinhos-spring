@@ -6,11 +6,12 @@ import jakarta.persistence.Column;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
+import org.springframework.hateoas.RepresentationModel;
 
 import java.io.Serializable;
 import java.util.List;
 
-public class EstablishmentDTO implements Serializable {
+public class EstablishmentDTO extends RepresentationModel<EstablishmentDTO> implements Serializable {
     private Long id;
     private String name;
     private Address address;
