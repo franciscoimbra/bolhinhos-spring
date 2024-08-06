@@ -1,6 +1,7 @@
 package com.franciscoimbra.bolhinhos.controller;
 import com.franciscoimbra.bolhinhos.dto.CustomerOrderDTO;
 import com.franciscoimbra.bolhinhos.service.CustomerOrderService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -9,6 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/customerorder/v1")
+@Tag(name = "Cliente Encomenda", description = "Cliente encomenda")
 public class CustomerOrderController {
 
     @Autowired

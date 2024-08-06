@@ -4,6 +4,7 @@ import com.franciscoimbra.bolhinhos.dto.AddressDTO;
 import com.franciscoimbra.bolhinhos.dto.ClientUserDTO;
 import com.franciscoimbra.bolhinhos.service.AddressService;
 import com.franciscoimbra.bolhinhos.service.ClientUserService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,6 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/clientuser/v1")
+@Tag(name = "Utilizador", description = "endpoints de utilizador")
 public class ClientUserController {
     @Autowired
     private ClientUserService clientUserService;

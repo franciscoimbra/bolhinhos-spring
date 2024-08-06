@@ -2,6 +2,7 @@ package com.franciscoimbra.bolhinhos.controller;
 
 import com.franciscoimbra.bolhinhos.dto.RecipeDTO;
 import com.franciscoimbra.bolhinhos.service.RecipeService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -10,6 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/order/v1")
+@Tag(name = "Receita", description = "endpoints de receita")
 public class RecipeController {
     @Autowired
     private RecipeService recipeService;
