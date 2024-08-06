@@ -3,9 +3,8 @@ package com.franciscoimbra.bolhinhos.controller;
 import com.franciscoimbra.bolhinhos.dto.RecipeDTO;
 import com.franciscoimbra.bolhinhos.service.RecipeService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -14,5 +13,31 @@ import java.util.List;
 public class RecipeController {
     @Autowired
     private RecipeService recipeService;
+
+    @GetMapping
+    public List<RecipeDTO> findAll() {
+        return recipeService.findAll();
+    }
+
+    @GetMapping("/{id}")
+    public RecipeDTO findById(@PathVariable("id") Long id) {
+        return recipeService.findById(id);
+    }
+
+    @PostMapping
+    public RecipeDTO create(@RequestBody RecipeDTO recipeDTO) {
+        return recipeService.create(recipeDTO);
+    }
+
+    @PutMapping
+    public RecipeDTO update(@RequestBody RecipeDTO recipeDTO) {
+        return recipeService.update(recipeDTO);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> delete(@PathVariable("id") Long id) {
+        recipeService.delete(id);
+        return ResponseEntity.ok().build();
+    }
 
 }

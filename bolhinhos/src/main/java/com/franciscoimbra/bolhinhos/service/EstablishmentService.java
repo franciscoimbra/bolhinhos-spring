@@ -28,8 +28,8 @@ public class EstablishmentService {
     static {
         mapper.createTypeMap(
                         Establishment.class,
-                        AddressDTO.class)
-                .addMapping(Establishment::getId, AddressDTO::setKey);
+                        EstablishmentDTO.class)
+                .addMapping(Establishment::getId, EstablishmentDTO::setId);
     }
 
     public EstablishmentDTO create(EstablishmentDTO address) {
