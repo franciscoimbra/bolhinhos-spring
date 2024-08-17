@@ -3,27 +3,26 @@ package com.franciscoimbra.bolhinhos.model;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
+@Table
 public class Address implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, length = 100)
+    @Column(name = "street", nullable = false, length = 80)
     private String street;
 
-    @Column(nullable = false, length = 50)
+    @Column(name = "number", nullable = false, length = 6)
+    private String number;
+
+    @Column(name = "city", nullable = false, length = 80)
     private String city;
 
-    @Column(nullable = false, length = 50)
-    private String state;
-
-    @Column(nullable = false, length = 10)
-    private String zipCode;
-
-    @Column(nullable = false, length = 50)
-    private String country;
+    @Column(name = "postal_code", nullable = false, length = 8)
+    private String postalCode;
 
 
     public Long getId() {
@@ -42,6 +41,14 @@ public class Address implements Serializable {
         this.street = street;
     }
 
+    public String getNumber() {
+        return number;
+    }
+
+    public void setNumber(String number) {
+        this.number = number;
+    }
+
     public String getCity() {
         return city;
     }
@@ -50,27 +57,11 @@ public class Address implements Serializable {
         this.city = city;
     }
 
-    public String getState() {
-        return state;
+    public String getPostalCode() {
+        return postalCode;
     }
 
-    public void setState(String state) {
-        this.state = state;
-    }
-
-    public String getZipCode() {
-        return zipCode;
-    }
-
-    public void setZipCode(String zipCode) {
-        this.zipCode = zipCode;
-    }
-
-    public String getCountry() {
-        return country;
-    }
-
-    public void setCountry(String country) {
-        this.country = country;
+    public void setPostalCode(String postalCode) {
+        this.postalCode = postalCode;
     }
 }

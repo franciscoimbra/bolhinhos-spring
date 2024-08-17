@@ -1,21 +1,23 @@
 package com.franciscoimbra.bolhinhos.dto;
 
 import com.franciscoimbra.bolhinhos.model.Address;
-import com.franciscoimbra.bolhinhos.model.ClientUser;
-import jakarta.persistence.Column;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
+import com.franciscoimbra.bolhinhos.model.Employee;
+import com.franciscoimbra.bolhinhos.model.springSecurity.User;
+import jakarta.persistence.*;
 import org.springframework.hateoas.RepresentationModel;
 
 import java.io.Serializable;
 import java.util.List;
 
-public class EstablishmentDTO extends RepresentationModel<EstablishmentDTO> implements Serializable {
+public class EstablishmentDTO  extends RepresentationModel<EstablishmentDTO> implements Serializable {
     private Long id;
+    private String nif;
     private String name;
+    private String email;
+    private String phone;
     private Address address;
-    private List<ClientUser> employees;
+    private User user;
+    private List<Employee> employees;
 
     public Long getId() {
         return id;
@@ -23,6 +25,14 @@ public class EstablishmentDTO extends RepresentationModel<EstablishmentDTO> impl
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getNif() {
+        return nif;
+    }
+
+    public void setNif(String nif) {
+        this.nif = nif;
     }
 
     public String getName() {
@@ -33,6 +43,22 @@ public class EstablishmentDTO extends RepresentationModel<EstablishmentDTO> impl
         this.name = name;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
     public Address getAddress() {
         return address;
     }
@@ -41,11 +67,19 @@ public class EstablishmentDTO extends RepresentationModel<EstablishmentDTO> impl
         this.address = address;
     }
 
-    public List<ClientUser> getEmployees() {
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public List<Employee> getEmployees() {
         return employees;
     }
 
-    public void setEmployees(List<ClientUser> employees) {
+    public void setEmployees(List<Employee> employees) {
         this.employees = employees;
     }
 }

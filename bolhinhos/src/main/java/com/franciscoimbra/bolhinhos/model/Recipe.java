@@ -4,18 +4,21 @@ import com.franciscoimbra.bolhinhos.model.enums.RecipeType;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
+import java.util.List;
+
 @Entity
+@Table
 public class Recipe implements Serializable {
+    private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(nullable = false, length = 100)
     private String name;
-    @Column(nullable = false)
     private RecipeType recipeType;
-    @Column(nullable = false)
-    private BigDecimal price;
+    private Double price;
+
+    @OneToMany(mappedBy = "recipe")
+    private List<OrderRecipe> orderRecipes;
 
     public Long getId() {
         return id;
@@ -41,11 +44,19 @@ public class Recipe implements Serializable {
         this.recipeType = recipeType;
     }
 
-    public BigDecimal getPrice() {
+    public Double getPrice() {
         return price;
     }
 
-    public void setPrice(BigDecimal price) {
+    public void setPrice(Double price) {
         this.price = price;
+    }
+
+    public List<OrderRecipe> getOrderRecipes() {
+        return orderRecipes;
+    }
+
+    public void setOrderRecipes(List<OrderRecipe> orderRecipes) {
+        this.orderRecipes = orderRecipes;
     }
 }

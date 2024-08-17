@@ -1,23 +1,22 @@
 package com.franciscoimbra.bolhinhos.dto;
+
 import org.springframework.hateoas.RepresentationModel;
 
 import java.io.Serializable;
 
-
 public class AddressDTO extends RepresentationModel<AddressDTO> implements Serializable {
-    private Long key;
+    private Long id;
     private String street;
+    private String number;
     private String city;
-    private String state;
-    private String zipCode;
-    private String country;
+    private String postalCode;
 
-    public Long getKey() {
-        return key;
+    public Long getId() {
+        return id;
     }
 
-    public void setKey(Long key) {
-        this.key = key;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getStreet() {
@@ -28,6 +27,14 @@ public class AddressDTO extends RepresentationModel<AddressDTO> implements Seria
         this.street = street;
     }
 
+    public String getNumber() {
+        return number;
+    }
+
+    public void setNumber(String number) {
+        this.number = number;
+    }
+
     public String getCity() {
         return city;
     }
@@ -36,27 +43,11 @@ public class AddressDTO extends RepresentationModel<AddressDTO> implements Seria
         this.city = city;
     }
 
-    public String getState() {
-        return state;
+    public String getPostalCode() {
+        return postalCode;
     }
 
-    public void setState(String state) {
-        this.state = state;
-    }
-
-    public String getZipCode() {
-        return zipCode;
-    }
-
-    public void setZipCode(String zipCode) {
-        this.zipCode = zipCode;
-    }
-
-    public String getCountry() {
-        return country;
-    }
-
-    public void setCountry(String country) {
-        this.country = country;
+    public void setPostalCode(String postalCode) {
+        this.postalCode = postalCode;
     }
 }
