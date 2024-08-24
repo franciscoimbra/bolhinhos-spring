@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -23,7 +24,10 @@ public class OrderController {
     public List<OrderDTO> findAll() {
         return service.findAll();
     }
-
+    @GetMapping("/{date}")
+    public OrderDTO findByPickupDate(@PathVariable("date") Date date) {
+        return service.findBypickupdate(date);
+    }
     @GetMapping("/{id}")
     public OrderDTO findById(@PathVariable("id") Long id) {
         return service.findById(id);
@@ -36,7 +40,6 @@ public class OrderController {
     public OrderDTO update(@RequestBody OrderDTO orderDTO) {
         return service.update(orderDTO);
     }
-
     @DeleteMapping("/{id}")
     public ResponseEntity<?> delete(@PathVariable("id") Long id) {
         service.delete(id);

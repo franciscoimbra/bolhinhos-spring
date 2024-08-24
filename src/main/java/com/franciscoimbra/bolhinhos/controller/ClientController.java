@@ -21,7 +21,6 @@ public class ClientController {
     public List<ClientDTO> findAll() {
         return service.getAll();
     }
-
     @GetMapping("/{id}")
     public ClientDTO findById(@PathVariable("id") Long id) {
         return  service.getById(id);
@@ -34,12 +33,12 @@ public class ClientController {
     public ClientDTO update(@RequestBody ClientDTO clientDTO) {
         return service.update(clientDTO);
     }
-
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> delete(@PathVariable("id") Long id) {
-        service.delete(id);
+    public ResponseEntity<?> delete(@PathVariable("id") Long id) {service.delete(id);
         return ResponseEntity.ok().build();
     }
+    @GetMapping("/filter/{nifOrPhone}")
+    public List<ClientDTO> findAllAddresses(@PathVariable("nifOrPhone") String nifOrPhone) {return service.getClientWithPhone(nifOrPhone);}
 
 
 }

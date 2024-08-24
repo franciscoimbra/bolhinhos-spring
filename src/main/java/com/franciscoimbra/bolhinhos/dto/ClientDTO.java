@@ -14,6 +14,7 @@ public class ClientDTO extends RepresentationModel<ClientDTO> implements Seriali
     private String firstName;
     private String lastName;
     private Date birthdayDay;
+    private String nif;
     private String email;
     private String phone;
     private Date creationDate;
@@ -50,6 +51,14 @@ public class ClientDTO extends RepresentationModel<ClientDTO> implements Seriali
 
     public void setBirthdayDay(Date birthdayDay) {
         this.birthdayDay = birthdayDay;
+    }
+
+    public String getNif() {
+        return nif;
+    }
+
+    public void setNif(String nif) {
+        this.nif = nif;
     }
 
     public String getEmail() {

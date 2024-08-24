@@ -19,10 +19,7 @@ public class EmployeeController {
     EmployeeService service;
 
     @GetMapping
-    public List<EmployeeDTO> findAll() {
-        return null;
-    }
-
+    public List<EmployeeDTO> findAll() { return service.getAll();}
     @GetMapping("/{id}")
     public EmployeeDTO findById(@PathVariable("id") Long id) {
         return service.getById(id);

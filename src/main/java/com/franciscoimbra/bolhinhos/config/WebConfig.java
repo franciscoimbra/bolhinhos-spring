@@ -8,10 +8,18 @@ public class WebConfig implements WebMvcConfigurer {
 
     @Override
     public void addCorsMappings(CorsRegistry registry) {
-        registry.addMapping("/**") // aplica o CORS a todos os endpoints
-                .allowedOrigins("http://localhost:8181","5.249.47.141","http://localhost:4200") // permite origens específicas
+        /*registry.addMapping("/**") // aplica o CORS a todos os endpoints
+                .allowedOrigins(
+                        "127.0.0.1:8181",
+                        "5.249.47.141",
+                        "127.0.0.1:4200",
+                        "192.168.1.3:4200"
+                ) // permite origens específicas
                 .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS") // permite métodos específicos
                 .allowedHeaders("*") // permite todos os cabeçalhos
-                .allowCredentials(true);
+                .allowCredentials(true);*/
+
+        registry.addMapping("/**").allowedMethods("*");
+
     }
 }

@@ -24,6 +24,9 @@ public class Client implements Serializable {
     @Column(name = "birthday_day", nullable = false, length = 20)
     private Date birthdayDay;
 
+    @Column(name = "nif", nullable = false, length = 10)
+    private String nif;
+
     @Column(name = "email", nullable = false, length = 80)
     private String email;
 
@@ -71,6 +74,10 @@ public class Client implements Serializable {
     public void setBirthdayDay(Date birthdayDay) {
         this.birthdayDay = birthdayDay;
     }
+
+    public String getNif() {return nif; }
+
+    public void setNif(String nif) {this.nif = nif;}
 
     public String getEmail() {
         return email;

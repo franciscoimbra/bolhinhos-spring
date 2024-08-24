@@ -1,6 +1,7 @@
 package com.franciscoimbra.bolhinhos.service;
 
 import com.franciscoimbra.bolhinhos.controller.AddressController;
+import com.franciscoimbra.bolhinhos.controller.ClientController;
 import com.franciscoimbra.bolhinhos.dto.AddressDTO;
 import com.franciscoimbra.bolhinhos.dto.ClientDTO;
 import com.franciscoimbra.bolhinhos.exception.ResourceNotFoundException;
@@ -36,6 +37,18 @@ public class ClientService {
                         ClientDTO.class)
                 .addMapping(Client::getId, ClientDTO::setId);
     }
+
+    public List<ClientDTO> getClientWithPhone(String phone) {
+        return repository.findByPhoneContainingOrNifContaining(phone, phone).stream()
+                .map(client -> {
+                    ClientDTO clientDTO = mapper.map(client, ClientDTO.class);
+                    clientDTO.add(linkTo(methodOn(ClientController.class).findById(clientDTO.getId())).withSelfRel());
+                    return clientDTO;
+                })
+                .collect(Collectors.toList());
+    }
+
+
     public List<ClientDTO> getAll() {
         return repository.findAll().stream()
                 .map(client -> {
