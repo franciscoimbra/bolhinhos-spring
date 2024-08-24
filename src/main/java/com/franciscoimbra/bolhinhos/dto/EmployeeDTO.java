@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import org.springframework.hateoas.RepresentationModel;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -12,10 +13,10 @@ public class EmployeeDTO extends RepresentationModel<EmployeeDTO> implements Ser
     private Long id;
     private String firstName;
     private String lastName;
-    private Date birthdayDay;
+    private LocalDate birthdayDay;
     private String email;
     private String phone;
-    private Date creationDate;
+    private LocalDate creationDate;
     private List<Order> orderList;
 
     public Long getId() {
@@ -42,11 +43,11 @@ public class EmployeeDTO extends RepresentationModel<EmployeeDTO> implements Ser
         this.lastName = lastName;
     }
 
-    public Date getBirthdayDay() {
+    public LocalDate getBirthdayDay() {
         return birthdayDay;
     }
 
-    public void setBirthdayDay(Date birthdayDay) {
+    public void setBirthdayDay(LocalDate birthdayDay) {
         this.birthdayDay = birthdayDay;
     }
 
@@ -66,11 +67,11 @@ public class EmployeeDTO extends RepresentationModel<EmployeeDTO> implements Ser
         this.phone = phone;
     }
 
-    public Date getCreationDate() {
+    public LocalDate getCreationDate() {
         return creationDate;
     }
 
-    public void setCreationDate(Date creationDate) {
+    public void setCreationDate(LocalDate creationDate) {
         this.creationDate = creationDate;
     }
 

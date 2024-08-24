@@ -16,7 +16,6 @@ public class BolhinhosApplication {
 	public static void main(String[] args) {
 
 		SpringApplication.run(BolhinhosApplication.class, args);
-
 	}
 	/*
 	@Autowired

@@ -4,6 +4,7 @@ import com.franciscoimbra.bolhinhos.model.springSecurity.User;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -17,10 +18,10 @@ public class Order implements Serializable {
     private Long id;
 
     @Column(name = "order_date", nullable = false, length = 20)
-    private Date orderDate;
+    private LocalDate orderDate;
 
     @Column(name = "pickup_Date", nullable = false, length = 20)
-    private Date pickupDate;
+    private LocalDate pickupDate;
 
     @OneToOne
     @JoinColumn(name = "address", referencedColumnName = "id", nullable = false)
@@ -45,19 +46,19 @@ public class Order implements Serializable {
         this.id = id;
     }
 
-    public Date getOrderDate() {
+    public LocalDate getOrderDate() {
         return orderDate;
     }
 
-    public void setOrderDate(Date orderDate) {
+    public void setOrderDate(LocalDate orderDate) {
         this.orderDate = orderDate;
     }
 
-    public Date getPickupDate() {
+    public LocalDate getPickupDate() {
         return pickupDate;
     }
 
-    public void setPickupDate(Date pickupDate) {
+    public void setPickupDate(LocalDate pickupDate) {
         this.pickupDate = pickupDate;
     }
 

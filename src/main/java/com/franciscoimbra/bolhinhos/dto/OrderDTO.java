@@ -8,13 +8,14 @@ import jakarta.persistence.*;
 import org.springframework.hateoas.RepresentationModel;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
 public class OrderDTO extends RepresentationModel<OrderDTO> implements Serializable {
     private Long id;
-    private Date orderDate;
-    private Date pickupDate;
+    private LocalDate orderDate;
+    private LocalDate pickupDate;
     private Address pickupPoint;
     private Employee employee;
     private Client client;
@@ -28,19 +29,19 @@ public class OrderDTO extends RepresentationModel<OrderDTO> implements Serializa
         this.id = id;
     }
 
-    public Date getOrderDate() {
+    public LocalDate getOrderDate() {
         return orderDate;
     }
 
-    public void setOrderDate(Date orderDate) {
+    public void setOrderDate(LocalDate orderDate) {
         this.orderDate = orderDate;
     }
 
-    public Date getPickupDate() {
+    public LocalDate getPickupDate() {
         return pickupDate;
     }
 
-    public void setPickupDate(Date pickupDate) {
+    public void setPickupDate(LocalDate pickupDate) {
         this.pickupDate = pickupDate;
     }
 

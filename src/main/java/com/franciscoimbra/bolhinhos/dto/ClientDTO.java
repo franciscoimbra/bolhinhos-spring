@@ -6,6 +6,7 @@ import jakarta.persistence.*;
 import org.springframework.hateoas.RepresentationModel;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -13,11 +14,11 @@ public class ClientDTO extends RepresentationModel<ClientDTO> implements Seriali
     private Long id;
     private String firstName;
     private String lastName;
-    private Date birthdayDay;
+    private LocalDate birthdayDay;
     private String nif;
     private String email;
     private String phone;
-    private Date creationDate;
+    private LocalDate creationDate;
     private List<Address> addressList;
     private List<Order> orderList;
 
@@ -45,11 +46,11 @@ public class ClientDTO extends RepresentationModel<ClientDTO> implements Seriali
         this.lastName = lastName;
     }
 
-    public Date getBirthdayDay() {
+    public LocalDate getBirthdayDay() {
         return birthdayDay;
     }
 
-    public void setBirthdayDay(Date birthdayDay) {
+    public void setBirthdayDay(LocalDate birthdayDay) {
         this.birthdayDay = birthdayDay;
     }
 
@@ -77,13 +78,10 @@ public class ClientDTO extends RepresentationModel<ClientDTO> implements Seriali
         this.phone = phone;
     }
 
-    public Date getCreationDate() {
-        return creationDate;
-    }
-
-    public void setCreationDate(Date creationDate) {
+    public void setCreationDate(LocalDate creationDate) {
         this.creationDate = creationDate;
     }
+
 
     public List<Address> getAddressList() {
         return addressList;

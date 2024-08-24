@@ -3,6 +3,7 @@ package com.franciscoimbra.bolhinhos.model;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -34,7 +35,7 @@ public class Client implements Serializable {
     private String phone;
 
     @Column(name = "creation_date", nullable = false, length = 20)
-    private Date creationDate;
+    private LocalDate creationDate;
 
     @OneToMany
     @JoinColumn(name = "address")
@@ -95,11 +96,11 @@ public class Client implements Serializable {
         this.phone = phone;
     }
 
-    public Date getCreationDate() {
+    public LocalDate getCreationDate() {
         return creationDate;
     }
 
-    public void setCreationDate(Date creationDate) {
+    public void setCreationDate(LocalDate creationDate) {
         this.creationDate = creationDate;
     }
 

@@ -9,8 +9,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 @RestController
 @RequestMapping("/api/order/v1")
@@ -23,10 +28,6 @@ public class OrderController {
     @GetMapping
     public List<OrderDTO> findAll() {
         return service.findAll();
-    }
-    @GetMapping("/{date}")
-    public OrderDTO findByPickupDate(@PathVariable("date") Date date) {
-        return service.findBypickupdate(date);
     }
     @GetMapping("/{id}")
     public OrderDTO findById(@PathVariable("id") Long id) {
@@ -44,5 +45,9 @@ public class OrderController {
     public ResponseEntity<?> delete(@PathVariable("id") Long id) {
         service.delete(id);
         return ResponseEntity.ok().build();
+    }
+    @GetMapping("/date/{date}")
+    public List<OrderDTO> findById(@PathVariable("date") LocalDate date) {
+        return service.findBypickupdate(date);
     }
 }

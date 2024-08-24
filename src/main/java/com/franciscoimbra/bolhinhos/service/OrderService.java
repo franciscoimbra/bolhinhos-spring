@@ -13,6 +13,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -46,12 +47,14 @@ public class OrderService {
                 .orElseThrow(() -> new ResourceNotFoundException("No records found for this ID"));
         return mapper.map(entity, OrderDTO.class);
     }
-    public OrderDTO findBypickupdate(Date pickupDate) {
-        var entity = repository.getReferenceByPickupDate(pickupDate);
-        if (entity == null) {
-            throw new ResourceNotFoundException("No records found for this date");
-        }
-        return mapper.map(entity, OrderDTO.class);
+    public List<OrderDTO> findBypickupdate(LocalDate pickupDate) {
+        return repository.getReferenceByPickupDate(pickupDate).stream()
+                .map(order -> {
+                    OrderDTO orderDTO = mapper.map(order, OrderDTO.class);
+                    orderDTO.add(linkTo(methodOn(AddressController.class).findById(orderDTO.getId())).withSelfRel());
+                    return orderDTO;
+                })
+                .collect(Collectors.toList());
     }
 
     public List<OrderDTO> findAll() {
