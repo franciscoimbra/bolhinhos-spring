@@ -4,10 +4,13 @@ import com.franciscoimbra.bolhinhos.dto.AccountCredentialsDTO;
 import com.franciscoimbra.bolhinhos.service.AuthService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.security.Principal;
 
 @Tag(name = "Authentication Endpoint")
 @RestController
@@ -23,10 +26,7 @@ public class AuthController {
     public ResponseEntity signin(@RequestBody AccountCredentialsDTO data) {
         if (checkIfParamsIsNotNull(data))
             return ResponseEntity.status(HttpStatus.FORBIDDEN).body("Invalid client request!");
-        System.out.println(data.getPassword()+"&&"+data.getUsername());
-        System.out.println("teste"+authServices.signin(data));
         var token = authServices.signin(data);
-
         if (token == null) return ResponseEntity.status(HttpStatus.FORBIDDEN).body("Invalid client request!");
         return token;
     }
@@ -43,6 +43,15 @@ public class AuthController {
         return token;
     }
 
+    @SuppressWarnings("rawtypes")
+    @Operation(summary = "Get Logged User")
+    @PutMapping(value = "/username")
+    public String getLogedUser(HttpServletRequest request) {
+        Principal principal = request.getUserPrincipal();
+        return principal.getName();
+    }
+
+
     @Operation(summary = "Creates a new user")
     @PostMapping(value = "/signup")
     public ResponseEntity<?> createUser(
@@ -52,7 +61,6 @@ public class AuthController {
                     .body("Invalid data supplied!");
         }
         ResponseEntity<?> response = authServices.createUser(data);
-
         return response;
     }
 
