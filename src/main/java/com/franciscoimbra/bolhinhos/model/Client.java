@@ -37,8 +37,10 @@ public class Client implements Serializable {
     @Column(name = "creation_date", nullable = false, length = 20)
     private LocalDate creationDate;
 
-    @OneToMany
-    @JoinColumn(name = "address")
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "client_address", joinColumns = {@JoinColumn(name = "id_client")},
+            inverseJoinColumns = {@JoinColumn(name = "id_addresses")}
+    )
     private List<Address> addressList;
 
     @OneToMany

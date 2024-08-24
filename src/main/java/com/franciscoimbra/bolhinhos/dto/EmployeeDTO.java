@@ -1,5 +1,6 @@
 package com.franciscoimbra.bolhinhos.dto;
 
+import com.franciscoimbra.bolhinhos.model.Address;
 import com.franciscoimbra.bolhinhos.model.Order;
 import jakarta.persistence.*;
 import org.springframework.hateoas.RepresentationModel;
@@ -16,8 +17,18 @@ public class EmployeeDTO extends RepresentationModel<EmployeeDTO> implements Ser
     private LocalDate birthdayDay;
     private String email;
     private String phone;
+    private List<Address> addressList;
     private LocalDate creationDate;
     private List<Order> orderList;
+
+
+    public List<Address> getAddressList() {
+        return addressList;
+    }
+
+    public void setAddressList(List<Address> addressList) {
+        this.addressList = addressList;
+    }
 
     public Long getId() {
         return id;

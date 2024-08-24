@@ -32,8 +32,13 @@ public class Establishment implements Serializable {
    @JoinColumn(name = "address", referencedColumnName = "id", nullable = true)
     private Address address;
 
-    @ManyToOne
-    private User user;
+    @ManyToMany
+    @JoinTable(
+            name = "user_estabelecimento", // Nome da tabela de junção
+            joinColumns = @JoinColumn(name = "estabelecimento_id"), // Chave estrangeira para Estabelecimento
+            inverseJoinColumns = @JoinColumn(name = "user_id") // Chave estrangeira para User
+    )
+    private List<User> users;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "establishment_employees", joinColumns = {@JoinColumn(name = "id_establishment")},
@@ -89,12 +94,13 @@ public class Establishment implements Serializable {
         this.address = address;
     }
 
-    public User getUser() {
-        return user;
+
+    public List<User> getUsers() {
+        return users;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUsers(List<User> users) {
+        this.users = users;
     }
 
     public List<Employee> getEmployees() {

@@ -16,8 +16,9 @@ public class EstablishmentDTO  extends RepresentationModel<EstablishmentDTO> imp
     private String email;
     private String phone;
     private Address address;
-    private User user;
     private List<Employee> employees;
+    private List<User> users;
+
 
     public Long getId() {
         return id;
@@ -67,12 +68,12 @@ public class EstablishmentDTO  extends RepresentationModel<EstablishmentDTO> imp
         this.address = address;
     }
 
-    public User getUser() {
-        return user;
+    public List<User> getUsers() {
+        return users;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUsers(List<User> users) {
+        this.users = users;
     }
 
     public List<Employee> getEmployees() {

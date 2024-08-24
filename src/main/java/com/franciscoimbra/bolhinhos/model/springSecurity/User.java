@@ -48,6 +48,11 @@ public class User implements UserDetails, Serializable {
             inverseJoinColumns = { @JoinColumn (name = "id_permission")})
     private List<Permission> permissions;
 
+
+    @ManyToMany(mappedBy = "users")
+    private List<Establishment> estabelecimentos;
+
+
     public List<String> getRoles() {
         List<String> roles = new ArrayList<>();
         for (Permission permission : this.permissions) {

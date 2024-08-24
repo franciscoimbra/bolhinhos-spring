@@ -22,6 +22,10 @@ public class ClientDTO extends RepresentationModel<ClientDTO> implements Seriali
     private List<Address> addressList;
     private List<Order> orderList;
 
+    public LocalDate getCreationDate() {
+        return creationDate;
+    }
+
     public Long getId() {
         return id;
     }

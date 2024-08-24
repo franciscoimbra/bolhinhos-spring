@@ -36,6 +36,13 @@ public class Employee implements Serializable {
     @OneToMany
     private List<Order> orderList;
 
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "employees_address", joinColumns = {@JoinColumn(name = "id_employees")},
+            inverseJoinColumns = {@JoinColumn(name = "id_addresses")}
+    )
+    private List<Address> addressList;
+
     public Long getId() {
         return id;
     }
